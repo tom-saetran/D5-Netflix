@@ -1,18 +1,17 @@
-import './App.css';
-// import Navbar from './Components/NavBar';
-import MovieContainer from './Components/MovieContainer';
-// import Search from './Components/Search';
-// import Footer from './Components/Footer';
+import Footer from "./Components/Footer"
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import MovieContainer from "./Components/MovieContainer"
 
 function App() {
-  return (
-    <div className="App">
-      {/* <Navbar/> */}
-      <MovieContainer />
-      {/* <Search /> */}
-      {/* <Footer /> */}
-    </div>
-  );
+    return (
+        <div className="App">
+            {/* <Navbar/> */}
+            <MovieContainer />
+            {/* <Search /> */}
+            <Footer />
+        </div>
+    )
 }
 
-export default App;
+export default App
