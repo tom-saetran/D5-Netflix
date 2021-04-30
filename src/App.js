@@ -6,11 +6,11 @@ import MovieContainer from './Components/MovieContainer';
 
 function App() {
   return (
-    <div className="App">
-      {/* <Navbar/> */}
-      <MovieContainer />
+    <div>
+      <NavBar />
+      {/* <MovieContainer /> */}
       {/* <Search /> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
