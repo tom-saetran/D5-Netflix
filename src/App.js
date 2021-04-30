@@ -1,12 +1,16 @@
-import logo from './logo.svg';
+import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from './Components/NavBar';
+import MovieContainer from './Components/MovieContainer';
 
 function App() {
   return (
-    <div>
-      <NavBar />
+    <div className="App">
+      {/* <Navbar/> */}
+      <MovieContainer />
+      {/* <Search /> */}
+      <Footer />
     </div>
   );
 }
