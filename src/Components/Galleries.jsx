@@ -1,12 +1,11 @@
 import '../../src/MovieContainer.css';
-import { Container, Col, Row, Spinner, Alert,Form } from 'react-bootstrap';
+import { Container, Col, Row, Spinner, Alert } from 'react-bootstrap';
 import { Component } from 'react'
 
 const API = "http://www.omdbapi.com/"
 const APIKEY = "c71a553d"
-let searchQuery=""
 
-class MovieContainer extends Component {
+class Galleries extends Component {
     state = {
         movies: {},
         isLoading: false,
@@ -20,7 +19,7 @@ class MovieContainer extends Component {
                 isLoading: true
             })
 
-            let response = await fetch(`${API}?apikey=${APIKEY}&s=${searchQuery}`)
+            let response = await fetch(`${API}?apikey=${APIKEY}&s=${this.props.movie}`)
             if (response.ok) {
                 let data = await response.json()
                 this.setState({ movies: data, isError: false, isLoading: false })
@@ -37,24 +36,10 @@ class MovieContainer extends Component {
     selectedStyle = { border: '2px solid red', color: 'red' }
     notSelectedStyle = { border: 'none', color: 'black' }
 
-    onChangeFunction = (e) =>{
-        searchQuery = e.target.value
-        this.componentDidMount()
-    }
 
     render() {
         return (
             <>
-            <Container>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Control type="text" placeholder="Search" onChange={(e)=>this.onChangeFunction(e)}/>
-                    </Form.Group>
-                    {/* <Button variant="primary" type="submit">
-                    Submit
-                </Button> */}
-                </Form>
-            </Container>
                 {
                     this.state.isLoading &&
                     <Spinner animation="border" variant="primary" />
@@ -67,7 +52,7 @@ class MovieContainer extends Component {
                     this.state.movies.Search &&
 
                     <Container fluid>
-                        <h3 className="mt-4 text-white">Movies of "{searchQuery}"</h3>
+                        <h3 className="mt-4 text-white">{this.props.movie}</h3>
                         <Row className="no-gutters testimonial-group ">
                             {console.log('this.state.movies.Search:', this.state.movies.Search)}
                             {this.state.movies.Search.length > 0 ?
@@ -87,4 +72,4 @@ class MovieContainer extends Component {
     }
 }
 
-export default MovieContainer;
+export default Galleries;
