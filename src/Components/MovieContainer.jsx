@@ -47,7 +47,7 @@ class MovieContainer extends Component {
             <>
             <Container>
                 <Form>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="formBasicEmail" className='mt-3'>
                         <Form.Control type="text" placeholder="Search" onChange={(e)=>this.onChangeFunction(e)}/>
                     </Form.Group>
                     {/* <Button variant="primary" type="submit">
