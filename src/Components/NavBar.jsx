@@ -21,13 +21,7 @@ const NavBar = () => (
                 <img src="./assets/avatar.png" id="avatar" />
                 </a>
             </Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown" > 
-                <NavDropdown.Item href="#manage-profiles">Manage Profiles</NavDropdown.Item>
-                <NavDropdown.Item href="#account">Account</NavDropdown.Item>
-                <NavDropdown.Item href="#help-center">Help Center</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#sign-out-netflix">Sign out Netflix</NavDropdown.Item>
-            </NavDropdown>
+
             </Nav>
         </Navbar.Collapse>
     </Navbar>
