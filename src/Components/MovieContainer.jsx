@@ -15,7 +15,6 @@ class MovieContainer extends Component {
 
     componentDidMount = async () => {
         try {
-
             this.setState({
                 isLoading: true
             })
