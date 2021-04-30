@@ -5,7 +5,7 @@ const APIKEY = "c71a553d"
 
 class Search extends React.Component {
     state = {
-        query: "",
+        query: this.props.query,
         status: 0
         // 0 = not started
         // 1 = started, spinner visible
