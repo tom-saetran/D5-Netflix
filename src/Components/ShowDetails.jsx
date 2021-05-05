@@ -3,7 +3,8 @@ import React from "react"
 class ShowDetails extends React.Component {
     state = {
         id: this.props.match.params.id,
-        movieData: null
+        movieData: null,
+        comments: []
     }
 
     componentDidMount() {
@@ -65,6 +66,12 @@ class ShowDetails extends React.Component {
                         <h1 className="text-white">{this.state.movieData.Title}</h1>
                         <img src={this.state.movieData.Poster} alt="" />
                         <p className="w-50 text-white">{this.state.movieData.Plot}</p>
+                        {this.state.comments.length > 0 &&
+                            this.state.comments.map(comment => (
+                                <p className="text-light">
+                                    {comment.author} said {comment.comment}
+                                </p>
+                            ))}
                     </div>
                 ) : (
                     <p className="text-white text-center">No data!</p>
