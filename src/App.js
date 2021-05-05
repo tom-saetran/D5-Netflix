@@ -4,17 +4,20 @@ import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import MovieContainer from "./Components/MovieContainer"
 import Galleries from "./Components/Galleries"
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import ShowDetails from "./Components/ShowDetails"
 
 function App() {
     return (
-        <div className="App">
+        <Router>
             <NavBar />
             <MovieContainer />
-            <Galleries movie="Harry Potter" />
-            <Galleries movie="Lord of the Rings" />
-            <Galleries movie="Batman" />
+            <Route exact component={ShowDetails} path="/:id" />
+            <Route exact render={routerProps => <Galleries {...routerProps} movie="Harry Potter" />} path="/" />
+            <Route exact render={routerProps => <Galleries {...routerProps} movie="Lord of the Rings" />} path="/" />
+            <Route exact render={routerProps => <Galleries {...routerProps} movie="Batman" />} path="/" />
             <Footer />
-        </div>
+        </Router>
     )
 }
 

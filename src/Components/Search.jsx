@@ -1,27 +1,27 @@
-import { Container, Form } from 'react-bootstrap';
-import { Component } from 'react';
+import { Container, Form } from "react-bootstrap"
+import { Component } from "react"
 
-let searchQuery=""
+let searchQuery = ""
 class Search extends Component {
-
-    onChangeFunction = (e) =>{
+    onChangeFunction = e => {
         searchQuery = e.target.value
-        console.log('searchQuery:', searchQuery)
+        console.log("searchQuery:", searchQuery)
     }
     render() {
         return (
             <Container>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Control type="text" placeholder="Search" onChange={(e)=>this.onChangeFunction(e)}/>
+                        <Form.Control type="text" placeholder="Search" onChange={e => this.onChangeFunction(e)} />
                     </Form.Group>
                     {/* <Button variant="primary" type="submit">
                     Submit
                 </Button> */}
                 </Form>
-            </Container>)
+            </Container>
+        )
     }
 }
 
-export default Search;
-export { searchQuery };
+export default Search
+export { searchQuery }

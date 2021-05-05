@@ -5,6 +5,7 @@ class API extends React.Component {
         endpoint: this.props.endpoint,
         endpoint_query: this.props.endpoint_query,
         authentication_token: this.props.authentication_token,
+        body: {},
         metrics: {},
         status: -1
         // -1 = idle
@@ -65,8 +66,6 @@ class API extends React.Component {
         try {
             this.setState({ status: 1 })
 
-            // Spawn spinner here
-
             result = await fetch(this.state.endpoint + this.state.endpoint_query, {
                 headers: {
                     Authentication: this.state.authentication_token ? this.state.authentication_token : ""
@@ -78,12 +77,10 @@ class API extends React.Component {
             this.setState({ status: 3 })
         } catch (error) {
             this.setState({ status: 5 })
-            // Remove spinner here
             console.error(error)
-            return null // replace with error toast?
+            return null
         } finally {
             this.setState({ status: 4 })
-            // Remove spinner here
             return result
         }
     }
