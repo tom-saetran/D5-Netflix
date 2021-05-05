@@ -1,21 +1,24 @@
-import Footer from './Components/Footer';
-import NavBar from './Components/NavBar';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import MovieContainer from './Components/MovieContainer';
-import Galleries from './Components/Galleries';
+import Footer from "./Components/Footer"
+import NavBar from "./Components/NavBar"
+import "./App.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import MovieContainer from "./Components/MovieContainer"
+import Galleries from "./Components/Galleries"
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import ShowDetails from "./Components/ShowDetails"
 
 function App() {
-  return (
-    <div className="App">
-      <NavBar />
-      <MovieContainer />
-      <Galleries movie="Harry Potter" />
-      <Galleries movie="Lord of the Rings" />
-      <Galleries movie="Batman" />
-      <Footer />
-    </div>
-  );
+    return (
+        <Router>
+            <NavBar />
+            <MovieContainer />
+            <Route exact component={ShowDetails} path="/:id" />
+            <Route exact render={routerProps => <Galleries {...routerProps} movie="Harry Potter" />} path="/" />
+            <Route exact render={routerProps => <Galleries {...routerProps} movie="Lord of the Rings" />} path="/" />
+            <Route exact render={routerProps => <Galleries {...routerProps} movie="Batman" />} path="/" />
+            <Footer />
+        </Router>
+    )
 }
 
-export default App;
+export default App
