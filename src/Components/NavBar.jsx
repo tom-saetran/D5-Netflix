@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap"
+import { Navbar, Nav } from "react-bootstrap"
 
 const NavBar = () => (
     <Navbar expand="lg" className="p-0" style={{ backgroundColor: "#111", color: "white" }}>

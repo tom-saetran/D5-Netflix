@@ -46,7 +46,7 @@ class Galleries extends Component {
                             {console.log("this.state.movies.Search:", this.state.movies.Search)}
                             {this.state.movies.Search.length > 0 ? (
                                 this.state.movies.Search.map(movie => (
-                                    <Col key={movie.imdbID} className="px-1">
+                                    <Col key={movie.imdbID} className="px-1" onClick={() => this.props.history.push("/details/" + movie.imdbID)}>
                                         <img src={movie.Poster} alt={movie.Title} />
                                         <div className="text-white">{movie.Title}</div>
                                     </Col>

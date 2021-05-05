@@ -12,7 +12,7 @@ function App() {
         <Router>
             <NavBar />
             <MovieContainer />
-            <Route exact component={ShowDetails} path="/:id" />
+            <Route exact component={ShowDetails} path="/details/:id" />
             <Route exact render={routerProps => <Galleries {...routerProps} movie="Harry Potter" />} path="/" />
             <Route exact render={routerProps => <Galleries {...routerProps} movie="Lord of the Rings" />} path="/" />
             <Route exact render={routerProps => <Galleries {...routerProps} movie="Batman" />} path="/" />
