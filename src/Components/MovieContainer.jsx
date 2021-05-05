@@ -1,6 +1,7 @@
 import "../../src/MovieContainer.css"
 import { Container, Col, Row, Spinner, Alert, Form } from "react-bootstrap"
 import { Component } from "react"
+import { Link } from "react-router-dom"
 
 const API = "http://www.omdbapi.com/"
 const APIKEY = "c71a553d"
@@ -63,8 +64,10 @@ class MovieContainer extends Component {
                             {this.state.movies.Search.length > 0 ? (
                                 this.state.movies.Search.map(movie => (
                                     <Col key={movie.imdbID} className="px-1">
-                                        <img src={movie.Poster} alt={movie.Title} />
-                                        <div className="text-white">{movie.Title}</div>
+                                        <Link to={`/details/${movie.imdbID}`}>
+                                            <img src={movie.Poster} alt={movie.Title} />
+                                            <div className="text-white">{movie.Title}</div>
+                                        </Link>
                                     </Col>
                                 ))
                             ) : (

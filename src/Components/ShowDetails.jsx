@@ -7,14 +7,19 @@ class ShowDetails extends React.Component {
     }
 
     componentDidMount() {
-        let idFromTheURLBar = this.props.match.params.id
-        console.log("propsid: " + idFromTheURLBar)
-        console.log("stateid: " + this.state.id)
-        this.getOmbdData()
+        this.getOmdbData()
         this.getCommentData()
     }
 
-    getOmbdData = async () => {
+    componentDidUpdate = async previousState => {
+        if (previousState.match.params.id !== this.props.match.params.id) {
+            await this.setState({ id: this.props.match.params.id })
+            this.getOmdbData()
+            this.getCommentData()
+        }
+    }
+
+    getOmdbData = async () => {
         const API = "http://www.omdbapi.com/"
         const APIKEY = "c71a553d"
 
@@ -56,10 +61,10 @@ class ShowDetails extends React.Component {
         return (
             <>
                 {this.state.movieData ? (
-                    <div>
-                        <h1 className="text-white text-center">{this.state.movieData.Title}</h1>
-                        <img className="justify-content-center" src={this.state.movieData.Poster} alt="" />
-                        <p className="text-white text-center">{this.state.movieData.Plot}</p>
+                    <div className="d-flex flex-column align-items-center">
+                        <h1 className="text-white">{this.state.movieData.Title}</h1>
+                        <img src={this.state.movieData.Poster} alt="" />
+                        <p className="w-50 text-white">{this.state.movieData.Plot}</p>
                     </div>
                 ) : (
                     <p className="text-white text-center">No data!</p>
