@@ -68,7 +68,7 @@ class ShowDetails extends React.Component {
                         <p className="w-50 text-white">{this.state.movieData.Plot}</p>
                         {this.state.comments.length > 0 &&
                             this.state.comments.map(comment => (
-                                <p className="text-light">
+                                <p className="text-muted">
                                     {comment.author} said {comment.comment}
                                 </p>
                             ))}
