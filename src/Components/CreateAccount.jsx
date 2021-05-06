@@ -112,7 +112,7 @@ class CreateAccount extends React.Component {
                                 value={this.state.emailName}
                                 onChange={async e => {
                                     await this.setState({ emailName: e.target.value })
-                                    /*replace check*/ if (e.target.value.length < 3) await this.setState({ emailNameError: "Enter a valid email address", emailNameValidated: false })
+                                    if (e.target.value.length < 3 || e.target.value[e.target.value.length - 1] === "@" || !e.target.value.match("@")) await this.setState({ emailNameError: "Enter a valid email address", emailNameValidated: false })
                                     else await this.setState({ emailNameError: "", emailNameValidated: true })
                                     e.target.classList = this.state.emailNameValidated ? "border border-success form-control" : "border border-warning form-control"
                                     this.checkAllValidated()
@@ -128,8 +128,9 @@ class CreateAccount extends React.Component {
                                 placeholder="Password"
                                 value={this.state.passwordName}
                                 onChange={async e => {
+                                    let passwordRequirements = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
                                     await this.setState({ passwordName: e.target.value })
-                                    /*replace check*/ if (e.target.value.length < 3) await this.setState({ passwordNameError: "Password is too short", passwordNameValidated: false })
+                                    if (!e.target.value.match(passwordRequirements)) await this.setState({ passwordNameError: "Password does not fulfill the criteria", passwordNameValidated: false })
                                     else await this.setState({ passwordNameError: "", passwordNameValidated: true })
                                     e.target.classList = this.state.passwordNameValidated ? "border border-success form-control" : "border border-warning form-control"
                                     this.checkAllValidated()
