@@ -1,5 +1,4 @@
 import Form from "react-bootstrap/Form"
-import InputGroup from "react-bootstrap/InputGroup"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
@@ -37,6 +36,14 @@ class CreateAccount extends React.Component {
         passwordNameError: "",
         passwordNameValidated: false,
 
+        dobName: "",
+        dobNameError: "",
+        dobNameValidated: false,
+
+        tosName: "",
+        tosNameError: "",
+        tosNameValidated: false,
+
         allValidated: false
     }
 
@@ -49,7 +56,7 @@ class CreateAccount extends React.Component {
     }
 
     checkAllValidated = () => {
-        if (this.state.firstNameValidated && this.state.lastNameValidated && this.state.streetNameValidated && this.state.cityNameValidated && this.state.zipNameValidated && this.state.emailNameValidated && this.state.passwordNameValidated) this.setState({ allValidated: true })
+        if (this.state.firstNameValidated && this.state.lastNameValidated && this.state.streetNameValidated && this.state.cityNameValidated && this.state.zipNameValidated && this.state.emailNameValidated && this.state.passwordNameValidated && this.state.dobNameValidated && this.state.tosNameValidated) this.setState({ allValidated: true })
         else this.setState({ allValidated: false })
     }
 
@@ -182,11 +189,48 @@ class CreateAccount extends React.Component {
                             <Form.Label className="text-muted">{this.state.zipNameError}</Form.Label>
                         </Form.Group>
                     </Form.Row>
-
-                    <Form.Group>
-                        <Form.Check className="text-muted" required label="Agree to terms and conditions" feedback="You must agree before submitting." />
-                    </Form.Group>
-                    <Button variant={this.state.allValidated ? "success" : "disabled"} type="submit">
+                    <Form.Row>
+                        <Form.Group as={Col} md="3" controlId="dob-name">
+                            <Form.Label className="text-muted">Date Of Birth</Form.Label>
+                            <Form.Control
+                                required
+                                type="date"
+                                onChange={async e => {
+                                    await this.setState({ dobName: e.target.value })
+                                    /*replace check*/ if (e.target.value.length < 3) await this.setState({ dobNameError: "DoB is wrong", dobNameValidated: false })
+                                    else await this.setState({ dobNameError: "", dobNameValidated: true })
+                                    e.target.classList = this.state.dobNameValidated ? "border border-success form-control" : "border border-warning form-control"
+                                    this.checkAllValidated()
+                                }}
+                            />
+                            <Form.Label className="text-muted">{this.state.dobNameError}</Form.Label>
+                        </Form.Group>
+                        <Form.Group as={Col} md="9" controlId="tos-name">
+                            <Form.Group className="d-flex flex-row">
+                                <Form.Control
+                                    required
+                                    type="checkbox"
+                                    onChange={async e => {
+                                        await this.setState({ tosName: e.target.value })
+                                        /*replace check*/ if (!e.target.checked) await this.setState({ tosNameError: "You must agree to continue.", tosNameValidated: false })
+                                        else await this.setState({ tosNameError: "", tosNameValidated: true })
+                                        e.target.classList = this.state.tosNameValidated ? "border border-success form-control" : "border border-warning form-control"
+                                        this.checkAllValidated()
+                                    }}
+                                />
+                                <Form.Label className="text-muted">
+                                    <span>
+                                        I Agree to the
+                                        <a href="/tos" target="_blank">
+                                            Terms of Service
+                                        </a>
+                                    </span>
+                                </Form.Label>
+                            </Form.Group>
+                            <Form.Label className="text-muted">{this.state.tosNameError}</Form.Label>
+                        </Form.Group>
+                    </Form.Row>
+                    <Button className={this.state.allValidated ? "w-100" : "w-100 text-muted"} variant={this.state.allValidated ? "success" : "disabled"} type="submit">
                         Submit form
                     </Button>
                 </Form>
