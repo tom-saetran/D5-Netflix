@@ -133,10 +133,6 @@ h5 {
     border-radius: 50%;
 }
 
-.container div {
-    background-color: solid black;
-}
-
 .input-profile {
     position: relative;
     box-sizing: border-box;
