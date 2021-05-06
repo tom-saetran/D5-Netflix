@@ -64,6 +64,7 @@ class CreateAccount extends React.Component {
     render() {
         return (
             <Container style={this.state.allValidated ? { backgroundColor: "#112112" } : { backgroundColor: "#111111" }} className={this.state.allValidated ? "border border-success pb-2" : "border border-light pb-2"}>
+                <h1 className="text-center text-muted pt-3">Registration Form</h1>
                 <Form className="pt-3" onSubmit={this.handleSubmit}>
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first-name">
