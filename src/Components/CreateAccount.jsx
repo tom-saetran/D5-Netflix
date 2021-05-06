@@ -65,7 +65,7 @@ class CreateAccount extends React.Component {
     render() {
         return (
             <Container style={this.state.allValidated ? { backgroundColor: "#112112" } : { backgroundColor: "#111111" }} className={this.state.allValidated ? "border border-success pb-2" : "border border-light pb-2"}>
-                <Form onSubmit={this.handleSubmit}>
+                <Form className="pt-3" onSubmit={this.handleSubmit}>
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first-name">
                             <Form.Label className="text-muted">First name</Form.Label>
@@ -209,11 +209,11 @@ class CreateAccount extends React.Component {
                             <Form.Label className="text-muted">{this.state.dobNameError}</Form.Label>
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="credit-name">
-                            <Container>
+                            <>
                                 <Form.Label className="text-muted">Credit Card Details</Form.Label>
                                 <CreditCardInput cardNumberInputProps={{ value: this.cardNumber, onChange: this.handleCardNumberChange }} cardExpiryInputProps={{ value: this.expiry, onChange: this.handleCardExpiryChange }} cardCVCInputProps={{ value: this.cvc, onChange: this.handleCardCVCChange }} fieldClassName="input" />
                                 <Form.Label className="text-muted">{this.state.creditNameError}</Form.Label>
-                            </Container>
+                            </>
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
