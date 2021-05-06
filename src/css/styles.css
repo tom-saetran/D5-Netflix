@@ -148,3 +148,7 @@ hr {
 #nav-bar {
     color: white;
 }
+
+label {
+    margin-bottom: 0 !important;
+}
