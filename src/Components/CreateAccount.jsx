@@ -218,28 +218,26 @@ class CreateAccount extends React.Component {
                     </Form.Row>
                     <Form.Row>
                         <Form.Group as={Col} controlId="tos-name">
-                            <Form.Group>
-                                <Form.Control
-                                    required
-                                    type="checkbox"
-                                    className="d-block"
-                                    onChange={async e => {
-                                        await this.setState({ tosName: e.target.value })
-                                        if (!e.target.checked) await this.setState({ tosNameError: "You must agree to continue.", tosNameValidated: false })
-                                        else await this.setState({ tosNameError: "", tosNameValidated: true })
-                                        e.target.classList = this.state.tosNameValidated ? "border border-success form-control" : "border border-warning form-control"
-                                        this.checkAllValidated()
-                                    }}
-                                />
-                                <Form.Label className="text-muted">
-                                    <span>
-                                        I Agree to the
-                                        <a className="px-1" href="/tos" target="_blank">
-                                            Terms of Service
-                                        </a>
-                                    </span>
-                                </Form.Label>
-                            </Form.Group>
+                            <Form.Control
+                                required
+                                type="checkbox"
+                                className="d-block"
+                                onChange={async e => {
+                                    await this.setState({ tosName: e.target.value })
+                                    if (!e.target.checked) await this.setState({ tosNameError: "You must agree to continue.", tosNameValidated: false })
+                                    else await this.setState({ tosNameError: "", tosNameValidated: true })
+                                    e.target.classList = this.state.tosNameValidated ? "border border-success form-control" : "border border-warning form-control"
+                                    this.checkAllValidated()
+                                }}
+                            />
+                            <Form.Label className="text-muted">
+                                <span>
+                                    I Agree to the
+                                    <a className="px-1" href="/tos" target="_blank">
+                                        Terms of Service
+                                    </a>
+                                </span>
+                            </Form.Label>
                             <Form.Label className="text-muted">{this.state.tosNameError}</Form.Label>
                         </Form.Group>
                     </Form.Row>
