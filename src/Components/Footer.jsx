@@ -6,7 +6,7 @@ import "../css/footer.css"
 
 const Footer = props => {
     return (
-        <Container id="footer">
+        <Container id="footer" className="pt-3">
             <Row>
                 <div className="col-md-3">
                     <nav>
@@ -43,7 +43,7 @@ const Footer = props => {
                             </a>
                         </li>
                         <li className="py-1 mt-2">
-                            <button className="btn btn-outline-secondary">Service Code</button>
+                            <button className="btn btn-square btn-outline-secondary">Service Code</button>
                         </li>
                         <li className="py-1 mt-2">
                             <span className="text-muted">© 1997-2021 Netflix Inc</span>

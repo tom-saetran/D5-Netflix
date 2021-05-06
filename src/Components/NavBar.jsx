@@ -2,26 +2,20 @@ import React from "react"
 import { Navbar, Nav } from "react-bootstrap"
 
 const NavBar = () => (
-    <Navbar expand="lg" className="p-0" style={{ backgroundColor: "#111", color: "white" }}>
-        <Navbar.Brand href="#home">
-            <img src="./assets/netflix_logo.png" alt="logo" id="logo" />
+    <Navbar variant="dark" expand="lg" className="p-0">
+        <Navbar.Brand href="/">
+            <img src="/assets/netflix_logo.png" id="logo" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-                <Nav.Link href="#home" className="text-white">
-                    Tv Shows
-                </Nav.Link>
-                <Nav.Link href="#link" className="text-white">
-                    Add New
-                </Nav.Link>
+                <Nav.Link href="/tv-shows">Tv Shows</Nav.Link>
+                <Nav.Link href="/register">Register</Nav.Link>
             </Nav>
             <Nav className="ml-auto">
-                <Nav.Link className="text-white" href="#home">
-                    KIDS
-                </Nav.Link>
-                <Nav.Link href="#">
-                    <img src="./assets/avatar.png" id="avatar" alt="" />
+                <Nav.Link href="/kids">KIDS</Nav.Link>
+                <Nav.Link href="/account">
+                    <img src="/assets/avatar.png" id="avatar" alt="" />
                 </Nav.Link>
             </Nav>
         </Navbar.Collapse>
