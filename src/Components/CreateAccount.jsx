@@ -8,7 +8,6 @@ import React from "react"
 import CreditCardInput from "react-credit-card-input"
 
 class CreateAccount extends React.Component {
-    //const [validated, setValidated] = useState(false)
     state = {
         firstName: "",
         firstNameError: "",
@@ -210,39 +209,37 @@ class CreateAccount extends React.Component {
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="credit-name">
                             <>
-                                <Form.Label className="text-muted">Credit Card Details</Form.Label>
+                                <Form.Label className="text-muted">Credit Card Details (Optional)</Form.Label>
                                 <CreditCardInput cardNumberInputProps={{ value: this.cardNumber, onChange: this.handleCardNumberChange }} cardExpiryInputProps={{ value: this.expiry, onChange: this.handleCardExpiryChange }} cardCVCInputProps={{ value: this.cvc, onChange: this.handleCardCVCChange }} fieldClassName="input" />
-                                <Form.Label className="text-muted">{this.state.creditNameError}</Form.Label>
                             </>
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
                         <Form.Group as={Col} controlId="tos-name">
-                            <Form.Control
+                            <Form.Check
                                 required
                                 type="checkbox"
-                                className="d-block"
+                                label={
+                                    <span className="text-muted">
+                                        I Agree to the
+                                        <a className="px-1" href="/tos" target="_blank">
+                                            Terms of Service
+                                        </a>
+                                    </span>
+                                }
                                 onChange={async e => {
                                     await this.setState({ tosName: e.target.value })
                                     if (!e.target.checked) await this.setState({ tosNameError: "You must agree to continue.", tosNameValidated: false })
                                     else await this.setState({ tosNameError: "", tosNameValidated: true })
-                                    e.target.classList = this.state.tosNameValidated ? "border border-success form-control" : "border border-warning form-control"
+                                    e.target.classList = this.state.tosNameValidated ? "border border-success form-check-input" : "border border-warning form-check-input"
                                     this.checkAllValidated()
                                 }}
                             />
-                            <Form.Label className="text-muted">
-                                <span>
-                                    I Agree to the
-                                    <a className="px-1" href="/tos" target="_blank">
-                                        Terms of Service
-                                    </a>
-                                </span>
-                            </Form.Label>
                             <Form.Label className="text-muted">{this.state.tosNameError}</Form.Label>
                         </Form.Group>
                     </Form.Row>
                     <Button className={this.state.allValidated ? "w-100" : "w-100 text-muted"} variant={this.state.allValidated ? "success" : "disabled"} type="submit">
-                        Submit form
+                        Register Now!
                     </Button>
                 </Form>
             </Container>

@@ -6,6 +6,7 @@ import MovieContainer from "./Components/MovieContainer"
 import Galleries from "./Components/Galleries"
 import ShowDetails from "./Components/ShowDetails"
 import CreateAccount from "./Components/CreateAccount"
+import TOS from "./Components/TOS"
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
 
                 <Route exact render={routerProps => <ShowDetails {...routerProps} title="Show Details" />} path="/details/:id" />
                 <Route exact render={routerProps => <CreateAccount {...routerProps} title="Create Account" />} path="/register" />
+                <Route exact render={routerProps => <TOS {...routerProps} title="Terms of Service" />} path="/tos" />
 
                 <Route component={NoRoute} />
             </Switch>
